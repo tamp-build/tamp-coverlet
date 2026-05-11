@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>Tamp.Coverlet.V6</RootNamespace>
+    <AssemblyName>Tamp.Coverlet.V6</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <PackageId>Tamp.Coverlet.V6</PackageId>
+    <Description>Tamp config-builder wrapper for Coverlet 6.x. Type-safe Format / Include / Exclude / UseSourceLink configuration for `dotnet test --collect "XPlat Code Coverage"`. Emits either an inline --collect argument string OR a runsettings.xml file. Not a CLI wrapper — Coverlet configures via dotnet test data-collector args + runsettings XML, both of which this package generates.</Description>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(TampCorePath)" Condition="'$(TampCoreMode)' == 'project'" />
+    <PackageReference Include="Tamp.Core" Condition="'$(TampCoreMode)' == 'package'" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
