@@ -31,9 +31,13 @@
     <TampCorePath Condition="'$(TampCorePath)' == ''">$(MSBuildThisFileDirectory)..\tamp\src\Tamp.Core\Tamp.Core.csproj</TampCorePath>
   </PropertyGroup>
 
+  <PropertyGroup Label="Tamp.NetCli.V10 dependency mode (HoldFast #19 — WithCoverlet extension on DotNetTestSettings)">
+    <TampNetCliMode Condition="'$(TampNetCliMode)' == ''">project</TampNetCliMode>
+    <TampNetCliPath Condition="'$(TampNetCliPath)' == ''">$(MSBuildThisFileDirectory)..\tamp\src\Tamp.NetCli.V10\Tamp.NetCli.V10.csproj</TampNetCliPath>
+  </PropertyGroup>
 
   <PropertyGroup Label="Tamp central version (TAM-81 — single source of truth for all packable projects in this repo). Bump this before tagging a release; csprojs do NOT carry their own Version element.">
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
   </PropertyGroup>
 
 </Project>

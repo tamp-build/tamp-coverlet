@@ -28,7 +28,25 @@ Both shapes are fiddly. This wrapper is a type-safe builder that emits
 both. You hold one `CoverletSettings` object as a build-script field
 and feed it into every test target's data collector.
 
-## Quick example — Strata-like setup
+## Minimal adoption snippet (0.2.0+) — `WithCoverlet` one-liner
+
+```csharp
+using Tamp.NetCli.V10;
+using Tamp.Coverlet.V6;
+
+Target Test => _ => _.Executes(() =>
+    DotNet.Test(s => s
+        .SetProject(Solution.Path)
+        .WithCoverlet(c => c
+            .AddFormat(CoverletFormat.OpenCover)
+            .AddInclude("[MyApp]*")
+            .AddExclude("[*.Tests]*"))
+        .SetResultsDirectory(Artifacts / "test-results")));
+```
+
+`WithCoverlet` is the cross-package extension method that handles the runsettings-XML generation + temp-file write + `SetSettings(...)` wiring in one fluent call. **This is the recommended shape for 0.2.0+ adopters.** The lower-level `Coverlet.Configure` + `ToCollectArgument` / `ToRunSettingsXml` surface stays available for adopters who need to share one config across multiple test targets or manage the runsettings file's lifecycle themselves.
+
+## Quick example — Strata-like setup (lower-level)
 
 ```csharp
 using Tamp;

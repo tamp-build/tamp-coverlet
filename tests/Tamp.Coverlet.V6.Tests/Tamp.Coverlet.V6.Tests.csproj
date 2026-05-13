@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Tamp.Coverlet.V6\Tamp.Coverlet.V6.csproj" />
+    <ProjectReference Include="$(TampNetCliPath)" Condition="'$(TampNetCliMode)' == 'project'" />
+    <PackageReference Include="Tamp.NetCli.V10" Condition="'$(TampNetCliMode)' == 'package'" />
   </ItemGroup>
 
 </Project>
