@@ -17,7 +17,7 @@ namespace Tamp.Coverlet.V6;
 ///   <item>Write the XML to a temp file.</item>
 ///   <item>Pass the file path to <see cref="DotNetTestSettings.SetSettings"/>.</item>
 /// </list>
-/// Took reflection to discover. <see cref="WithCoverlet"/> collapses it to
+/// Took reflection to discover. <c>WithCoverlet</c> collapses it to
 /// one fluent call.
 /// </remarks>
 public static class DotNetTestSettingsCoverletExtensions
